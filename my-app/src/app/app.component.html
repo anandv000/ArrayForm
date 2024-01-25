@@ -1,4 +1,4 @@
-<div>
+<div class="m-5">
   <form [formGroup]="rForm" (submit)="onSubmit()">
     <div class="col-4">
       <label class="form-label">Name :</label>
@@ -18,8 +18,34 @@
       <span class="text-danger" *ngIf="data.email && data.email.touched && data.email.invalid">Please enter valid Email address*</span>
     </div>
 
+    <div class="col-4 mt-4">
+      <button class="btn btn-warning" type="button" (click)="onAddSkill()">Add Skills</button>
+    </div>
+
+    <div class="col-4 mt-4" formArrayName="skills">
+      <div *ngFor="let skill of rForm.controls.skills.controls; index as i" [formGroup]="skill" class="container">
+
+      <div class="col-6">
+        <label class="form-label">Skill1 :</label>
+        <input type="text" name="field1" class="form-control" formControlName="field1">
+        <span class="text-danger" *ngIf="">Please enter your skill*</span>
+      </div>
+
+      <div class="col-6">
+        <label class="form-label">Skill2 :</label>
+        <input type="text" name="field2" class="form-control" formControlName="field2">
+        <span class="text-danger" *ngIf="">Please enter your skill*</span>
+      </div>
+
+      <div class="col-4 mt-4 mb-4">
+        <button class="btn btn-outline-danger" type="button" (click)="onRemoveSkill(i)">Remove</button>
+      </div>
+
+    </div>
+    </div>
+
     <div class="col-4 d-flex justify-content-center mt-4">
-      <button [ngClass]="rForm.invalid ? 'btn btn-secondary' : 'btn btn-primary' " type="submit" [disabled]="rForm.invalid">Submit</button>
+      <button class="ps-3 pe-3" [ngClass]="rForm.invalid ? 'btn btn-secondary' : 'btn btn-primary' " type="submit" [disabled]="rForm.invalid">Submit</button>
     </div>
   </form>
 </div>
