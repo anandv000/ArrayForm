@@ -21,4 +21,8 @@ export class AppComponent {
     console.log(this.rForm.controls.email.value);
     console.log(this.rForm.controls);
   }
+
+  get data() {
+    return this.rForm.controls;
+  }
 }
