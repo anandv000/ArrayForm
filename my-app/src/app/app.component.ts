@@ -24,6 +24,7 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.rForm.value);
+    this.rForm.reset();
   }
 
   get data() {
