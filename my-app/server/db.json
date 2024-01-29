@@ -1,0 +1,28 @@
+{
+  "user": [
+    {
+      "name": "anshu",
+      "age": 50,
+      "email": "brinda@gmail.com",
+      "skills": [
+        {
+          "field1": "playing",
+          "field2": "singing"
+        }
+      ],
+      "id": "c784"
+    },
+    {
+      "name": "brinda",
+      "age": 1,
+      "email": "brinda@gmail.com",
+      "skills": [
+        {
+          "field1": "85",
+          "field2": "45"
+        }
+      ],
+      "id": "7d17"
+    }
+  ]
+}

@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-4 mt-4">
-      <button class="btn btn-warning" type="button" (click)="onAddSkill()">Add Skills</button>
+      <button class="btn btn-warning" type="button" (click)="onAddSkill()" disabled>Add Skills</button>
     </div>
 
     <div class="col-4 mt-4" formArrayName="skills">
@@ -28,13 +28,13 @@
 
       <div class="col-6">
         <label class="form-label">Skill1 :</label>
-        <input type="text" name="field1" class="form-control" formControlName="field1">
+        <input type="text" name="field1" class="form-control" formControlName="field1" placeholder="Add Skill">
         <span class="text-danger" *ngIf="skill.controls.field1 && skill.controls.field1.touched && skill.controls.field1.invalid">Please enter your skill*</span>
       </div>
 
       <div class="col-6">
         <label class="form-label">Skill2 :</label>
-        <input type="text" name="field2" class="form-control" formControlName="field2">
+        <input type="text" name="field2" class="form-control" formControlName="field2" placeholder="Add Skill">
         <span class="text-danger" *ngIf="skill.controls.field2 && skill.controls.field2.touched && skill.controls.field2.invalid">Please enter your skill*</span>
       </div>
 
@@ -46,7 +46,41 @@
     </div>
 
     <div class="col-4 d-flex justify-content-center mt-4">
-      <button class="ps-5 pe-5 pt-2 pb-2" [ngClass]="rForm.invalid ? 'btn btn-secondary' : 'btn btn-primary' " type="submit" [disabled]="rForm.invalid">Submit</button>
+      <button class="ps-5 pe-5 pt-2 pb-2" [ngClass]="rForm.invalid ? 'btn btn-secondary' : 'btn btn-primary' " type="submit" [disabled]="rForm.invalid">{{editMode ? 'Update' : 'Submit'}}</button>
     </div>
   </form>
 </div>
+
+<div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover table-striped border">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Skill1</th>
+              <th>Skill2</th>
+              <th>Remove</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let data of userData; index as i">
+              <td>{{i+1}}</td>
+              <td>{{data.name}}</td>
+              <td>{{data.age}}</td>
+              <td>{{data.email}}</td>
+              <td>{{data.skills[0].field1}}</td>
+              <td>{{data.skills[0].field2}}</td>
+              <td><button class="btn btn-danger" (click)="onRemove(data.id)">Remove</button></td>
+              <td><button class="btn btn-primary" (click)="onEdit(data.id)">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
